@@ -7,6 +7,8 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
   entry: {app:'./js/main.js',vendor: ['jquery']},
   output: {
+    path: path.resolve(__dirname,"dist"),
+    // publicPath:"./assets",
     filename: 'bundle.js'
   },
   module: {
