@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack")
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");//将css独立引入变成link标签形式
 
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
@@ -15,7 +16,10 @@ module.exports = {
     rules:[
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.js[x]?$/,
@@ -33,10 +37,15 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
+              limit: 8192,
+              name:"[name]-[hash:5].[ext]"
             }
           }
         ]
+      },
+      {
+        test: /.less$/, 
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   },
@@ -48,17 +57,18 @@ module.exports = {
     // inline: true,
   },
   plugins: [
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin(),//压缩代码
     new HtmlwebpackPlugin({
       title: 'hu',
       filename: 'index.html'
     }),
-    new OpenBrowserPlugin({
-      url: 'http://localhost:8088'
-    }),
+    // new OpenBrowserPlugin({
+    //   url: 'http://localhost:8088'
+    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.js'
-    })
+    }),
+    new ExtractTextPlugin("[name].css")
   ]
 };

@@ -6,6 +6,7 @@ var $ = require('jquery');
 $('h1').text('哈哈');
 
 require("./es6.js");
+require('../index.less');
 require('../app.css');
 
 var img1 = document.createElement("img");
