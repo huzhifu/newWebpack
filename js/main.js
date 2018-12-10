@@ -1,4 +1,4 @@
-var longVariableName = 'Hello';
+var longVariableName = 'Hello1';
 longVariableName += ' World';
 document.write('<h1>' + longVariableName + '</h1>');
 
