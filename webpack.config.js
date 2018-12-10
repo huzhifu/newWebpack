@@ -41,18 +41,18 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "./"),
     compress: true,
-    port: 8080
+    port: 8088
     // host:"localhost",
     // inline: true,
   },
   plugins: [
     new UglifyJsPlugin(),
     new HtmlwebpackPlugin({
-      title: 'xiaoyuan',
+      title: 'hu',
       filename: 'index.html'
     }),
     new OpenBrowserPlugin({
-      url: 'http://localhost:8080'
+      url: 'http://localhost:8088'
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
