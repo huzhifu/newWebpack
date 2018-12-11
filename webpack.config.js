@@ -44,8 +44,12 @@ module.exports = {
         ]
       },
       {
-        test: /.less$/, 
-        use: ['style-loader', 'css-loader', 'less-loader']
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            //resolve-url-loader may be chained before sass-loader if necessary
+            use: ['css-loader', 'less-loader']
+        })
       }
     ]
   },
@@ -69,6 +73,6 @@ module.exports = {
       name: 'vendor',
       filename: 'vendor.js'
     }),
-    new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin("style.css")
   ]
 };

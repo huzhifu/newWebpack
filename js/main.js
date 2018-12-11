@@ -7,7 +7,7 @@ $('h1').text('哈哈');
 
 require("./es6.js");
 require('../index.less');
-require('../app.css');
+require('../app.less');
 
 var img1 = document.createElement("img");
 img1.src = require("../img/small.png");
