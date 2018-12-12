@@ -12,6 +12,10 @@ module.exports = {
     // publicPath:"./assets",
     filename: 'bundle.js'
   },
+  externals:{
+    'jquery':'window.jQuery',//全局引入jq
+    'layui':'layui',//全局引入layui
+  },
   module: {
     rules:[
       {
@@ -63,7 +67,7 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin(),//压缩代码
     new HtmlwebpackPlugin({
-      title: 'hu',
+      title: '首页',
       filename: 'index.html'
     }),
     // new OpenBrowserPlugin({
@@ -73,6 +77,9 @@ module.exports = {
       name: 'vendor',
       filename: 'vendor.js'
     }),
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin({
+      filename: 'css/[name].css', 
+      allChunks: true
+    })
   ]
 };
