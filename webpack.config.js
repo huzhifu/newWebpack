@@ -72,7 +72,7 @@ module.exports = {
       filename: 'index.html',
       template:'./index.html',
       filename:'./index.html',
-      favicon:'./favicon.ico',
+      favicon:'./favicon.ico', //配置网页logo
       inject: true,
       hash:true,
     }),
