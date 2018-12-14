@@ -72,6 +72,7 @@ module.exports = {
       filename: 'index.html',
       template:'./index.html',
       filename:'./index.html',
+      favicon:'./favicon.ico',
       inject: true,
       hash:true,
     }),
